@@ -1,7 +1,7 @@
 #include "drone_deliver.h"
 
 DroneDelivery::DroneDelivery() {
-    
+
 }
 
 DroneDelivery::~DroneDelivery() {

@@ -16,7 +16,7 @@ enum DroneAction {
   DELIVER_PACKAGE,
   RETURN_TO_HOME,
   LAND,
-  AVOID_OBSTACLE
+  AVOID_OBSTACLE,
 };
 
 class DroneDelivery {
