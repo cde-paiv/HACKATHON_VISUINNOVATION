@@ -1,0 +1,85 @@
+from mavsdk import System
+from mavsdk.mission import MissionItem, MissionPlan
+from monitoring import first_comparation
+from monitoring import monitoring_misson_n_drone
+import variables
+import log
+import asyncio
+
+class Mission:
+	def __init__(self):
+		STOPPED = 2
+		RUNNING = 1
+		FINISHED = 0
+		ONCE = 1
+		UNTIL_END = 0
+		Mission.date = None
+		Mission.wapoints = [
+							"",
+							"",
+							"",
+							]
+		Mission.distance = 5
+		Mission.id = "a1fgudf456"
+		Mission.distance = 0
+		Mission.status = STOPPED
+		Mission.time_start = None
+		Mission.time_end = None
+
+
+async def	mission_manage(drone):
+		if await first_comparation(drone) == True:
+			return True
+		print("===========One or more parameters are not great to fly===========")
+		return False
+
+
+async def	drone_fly(mission, drone):
+		mission_plan = MissionPlan(mission.mission_itens)
+		await drone.mission.set_return_to_launch_after_mission(True)
+		await drone.mission.upload_mission(mission_plan)
+		await drone.action.arm()
+		await drone.action.takeoff(drone.altitute_to_fly)
+		await drone.mission.start_mission()
+
+
+async def	start_mission(drone):
+		print("-- Starting_Mision")
+		if await mission_manage(drone) == True:
+			#mission_plan = MissionbPlan(mission.mission_itens)
+			monitoring = asyncio.create_task(monitoring_misson_n_drone(drone, Mission.UNTIL_END))
+			log_file = asyncio.create_task(log.log())
+			#await drone_fly(drone, mission)
+			await drone_fly_test(drone)
+			monitoring.cancel()
+			log_file.cancel()
+			return True
+		else:
+			#write message(cant start the flight now, try again later)
+			return False
+
+
+def			cancel_mission(drone):
+		drone.FlightMode.RETURN_TO_LAUNCH() # never used this one, need to be tested
+		# await drone.action.return_to_launch()
+
+
+async def	drone_fly_test(drone):
+	print("Arming...")
+	Mission.status = Mission.RUNNING
+	await drone.action.arm()
+	await drone.action.set_takeoff_altitude(590.0)
+	print("taking off...")
+	await drone.action.takeoff()
+	await asyncio.sleep(10)
+	print("going to location...")
+	await drone.action.goto_location(-35.362633, 149.163448, 590.0, 0.0)
+	await asyncio.sleep(30)
+	print("return to launch...")
+	await drone.action.return_to_launch()
+	await asyncio.sleep(30)
+	print("landing...")
+	await drone.action.land()
+	print("program ending")
+	await asyncio.sleep(10)
+	Mission.status = Mission.FINISHED
