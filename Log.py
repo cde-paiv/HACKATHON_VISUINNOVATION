@@ -1,6 +1,4 @@
-from variables import Mission
-from variables import Drone
-from variables import FINISHED
+from Drone import Drone
 import datetime
 import asyncio
 
@@ -8,18 +6,20 @@ def creating_log_file(name):
 		open(name, "x")
 
 async def writting_simple_log(file):
+		from Mission import Mission
 		with open(file, "a") as simple_log:
 			log_header = f"Drone {Drone.drone_id}\nTime of flight {Mission.time_end - Mission.time_start}\nStatus: {Mission.status}\n"
 			simple_log.write(log_header)
 
 async def	writting_detailed_log(file):
+	from Mission import Mission
 	with open(file, "a") as det_log:
 		log_header = f"Drone {Drone.drone_id} starting flight {Mission.time_start}\n"
 		det_log.write(log_header)
 		while 1:
 			log_entry = f"{Drone.latitude}, {Drone.longitude}, {Drone.relative_altitude}\n"
 			det_log.write(log_entry)
-			if Mission.status == FINISHED:
+			if Mission.status == Mission.FINISHED:
 				break
 			await asyncio.sleep(1)
 		Mission.time_end = datetime.datetime.now()
@@ -27,6 +27,7 @@ async def	writting_detailed_log(file):
 		det_log.write(log_footer)
 
 async def log():
+	from Mission import Mission
 	Mission.time_start = datetime.datetime.now()
 	Mission.date = datetime.date.today()
 	simple_log = f"simple_log{Mission.date}{Mission.time_start}.txt"
