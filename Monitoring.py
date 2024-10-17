@@ -20,8 +20,7 @@ class Monitoring:
 
 	async def first_comparation(drone):
 		await Monitoring.refreshing_values(drone)
-		return True
-	""" 	if Weather.humidity > Ideal_params.HUMIDITY:
+		if Weather.humidity > Ideal_params.HUMIDITY:
 			return False
 		if Weather.wind > Ideal_params.WIND:
 			return False
@@ -44,7 +43,8 @@ class Monitoring:
 					#===drone====#
 		if Drone.absolute_altitude > Ideal_params.MAX_ABSOLUTE_ALTITUDE:
 			return False
-		return True """
+		return True
+
 
 	async def	comparing_values():
 					#===weather===#

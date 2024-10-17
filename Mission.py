@@ -1,6 +1,7 @@
-from mavsdk import System
 from mavsdk.mission import MissionItem, MissionPlan
 from Monitoring import Monitoring
+from Waypoint import Waypoint
+from mavsdk import System
 from Log import log
 import asyncio
 
@@ -46,7 +47,6 @@ class Mission:
 	async def	start_mission(drone):
 			print("-- Starting_Mision")
 			if await Mission.mission_manage(drone) == True:
-				#mission_plan = MissionbPlan(mission.mission_itens)
 				monitoring = asyncio.create_task(Monitoring.monitoring_misson_n_drone(drone))
 				log_file = asyncio.create_task(log())
 				#await drone_fly(drone, mission)
@@ -63,12 +63,12 @@ class Mission:
 		print("Arming...")
 		Mission.status = Mission.RUNNING
 		await drone.action.arm()
-		await drone.action.set_takeoff_altitude(590.0)
+		await drone.action.set_takeoff_altitude(Waypoint.altitude)
 		print("taking off...")
 		await drone.action.takeoff()
 		await asyncio.sleep(10)
 		print("going to location...")
-		await drone.action.goto_location(-35.362633, 149.163448, 590.0, 0.0)
+		await drone.action.goto_location(Waypoint.latitude, Waypoint.longitude, Waypoint.altitude, 0)
 		await asyncio.sleep(30)
 		print("return to launch...")
 		await drone.action.return_to_launch()
