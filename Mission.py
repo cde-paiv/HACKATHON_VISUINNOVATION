@@ -26,16 +26,22 @@ class Mission:
 		Mission.time_start = None
 		Mission.time_end = None
 
-	def			cancel_mission(drone):
-		drone.FlightMode.RETURN_TO_LAUNCH() # never used this one, need to be tested
-		# await drone.action.return_to_launch()
 
+#	@ Ativa o modo rtl instantaneamente, cancelando a missao
+	async def		cancel_mission(drone):
+		await drone.action.returnto_launch()
+
+
+#	@ checa os parametros para ver se pode voar
 	async def	mission_manage(drone):
 			if await Monitoring.first_comparation(drone) == True:
 				return True
 			print("===========One or more parameters are not great to fly===========")
 			return False
 
+
+#	@@ tem que criar ela completa, funcionando para varios ponto e nao dependente de sleep
+#	@ missao final de voo
 	async def	drone_fly(mission, drone):
 			mission_plan = MissionPlan(mission.mission_itens)
 			await drone.mission.set_return_to_launch_after_mission(True)
@@ -44,6 +50,8 @@ class Mission:
 			await drone.action.takeoff(drone.altitute_to_fly)
 			await drone.mission.start_mission()
 
+
+#	@ função que começa e missao e ativa o monitoramento asincrono
 	async def	start_mission(drone):
 			print("-- Starting_Mision")
 			if await Mission.mission_manage(drone) == True:
@@ -59,6 +67,9 @@ class Mission:
 				#write message(cant start the flight now, try again later)
 				return False
 
+
+#	@@ vai sair completamente
+#	@ função de teste de voô
 	async def	drone_fly_test(drone):
 		print("Arming...")
 		Mission.status = Mission.RUNNING

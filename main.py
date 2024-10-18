@@ -9,7 +9,6 @@ import sys
 
 # how to test it: You will need to execute the program with: fly (User_name) (point to go)
 
-
 def		print_values():
 	from Weather import Weather
 	print(f"drone at {Drone.latitude} {Drone.longitude}")
@@ -21,7 +20,8 @@ def		print_values():
 	print('Description:',Weather.description)
 	print('Visibility:',Weather.visibility)
 
-
+#	@@ essa função vai mudar, porque a base de dados será diferente, oque muda o tipo de leitura
+#	@ função lê a base de dados e procura os waypoints
 def finding_points_user(name, waypoint):
 	with open('database.csv', 'r') as csvfile:
 		csv_reader = csv.reader(csvfile)
@@ -45,11 +45,11 @@ async def main():
 
 	Drone.drone_id = 14550
 	what_to_do = sys.argv[1]
-	name = sys.argv[2]
-	waypoint = sys.argv[3]
 	await drone.connect(system_address="udp://:14550")
 	print("-- drone connected")
 	if sys.argv[1] == "fly":
+		name = sys.argv[2]
+		waypoint = sys.argv[3]
 		if finding_points_user(name, waypoint) == True:
 			await Mission.start_mission(drone)
 	if sys.argv[1] == "data":

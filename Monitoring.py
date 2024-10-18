@@ -6,6 +6,8 @@ from Drone import Drone
 import asyncio
 
 class Monitoring:
+#	@@ aqui vai mudar que vai entrar o handeling da cituação de acordo com o parâmetro ruim
+#	@ Função de comparação pré voô
 	async def	monitoring_misson_n_drone(drone):
 		from Mission import Mission
 		while 1:
@@ -18,6 +20,8 @@ class Monitoring:
 			if Mission.status == Mission.FINISHED:
 				break
 
+#	@@ aqui vai mudar que vai entrar o handeling da cituação de acordo com o parâmetro ruim
+#	@ Função de comparação pré voô
 	async def first_comparation(drone):
 		await Monitoring.refreshing_values(drone)
 		if Weather.humidity > Ideal_params.HUMIDITY:
@@ -45,7 +49,8 @@ class Monitoring:
 			return False
 		return True
 
-
+#	@@ aqui vai mudar que vai entrar o handeling da cituação de acordo com o parâmetro ruim
+#	@ Função de comparação durante o voô
 	async def	comparing_values():
 					#===weather===#
 		if Weather.humidity > Ideal_params.HUMIDITY:
@@ -79,6 +84,8 @@ class Monitoring:
 			return False
 		return True
 
+#	@@ so vai mudar se quisermos adicionar mais comparações ao código
+#	@ Função que vai atualizar os valores para que a comparação seja feita
 	async def	refreshing_values(drone):
 		async for battery in drone.telemetry.battery():
 			break
