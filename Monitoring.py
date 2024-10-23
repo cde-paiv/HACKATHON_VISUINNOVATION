@@ -6,21 +6,31 @@ from Drone import Drone
 import asyncio
 
 class Monitoring:
-#	@@ aqui vai mudar que vai entrar o handeling da cituação de acordo com o parâmetro ruim
+#	@@ aqui vai mudar que vai entrar o handeling da situação de acordo com o parâmetro ruim
 #	@ Função de comparação pré voô
 	async def	monitoring_misson_n_drone(drone):
 		from Mission import Mission
+
+		previous_status = None
+
 		while 1:
 			await Monitoring.refreshing_values(drone)
-			if await Monitoring.comparing_values() == False:
-				print("===========One or more parameters are not great===========")
+
+			current_status = await Monitoring.comparing_values()
+
+			if current_status != previous_status:
+				if not current_status:
+					print("===========One or more parameters are not great===========")
 			# Here is going to be the actions that depending on the the return of the comparing_values
 			# will happen. -----(if the params are not good, flyback)------(if they are terrible, land_Now)------
 			#if flag == UNTIL_END:
+
+				previous_status = current_status
+
 			if Mission.status == Mission.FINISHED:
 				break
 
-#	@@ aqui vai mudar que vai entrar o handeling da cituação de acordo com o parâmetro ruim
+#	@@ aqui vai mudar que vai entrar o handeling da situação de acordo com o parâmetro ruim
 #	@ Função de comparação pré voô
 	async def first_comparation(drone):
 		await Monitoring.refreshing_values(drone)
@@ -49,7 +59,7 @@ class Monitoring:
 			return False
 		return True
 
-#	@@ aqui vai mudar que vai entrar o handeling da cituação de acordo com o parâmetro ruim
+#	@@ aqui vai mudar que vai entrar o handeling da situação de acordo com o parâmetro ruim
 #	@ Função de comparação durante o voô
 	async def	comparing_values():
 					#===weather===#

@@ -12,11 +12,25 @@ class Location:
 		print(f"Location updated to: ({self.latitude}, {self.longitude}, {self.altitude}m)")
 
 	def calc_distance(self, other_location):
-		from math import sqrt
+		import math
 
-		distance = sqrt(
-			(self.latitude - other_location.latitude) ** 2 +
-			(self.longitude - other_location.longitude) ** 2 +
-			(self.altitude - other_location.altitude) ** 2
+		lat1_rad = math.radians(self.latitude)
+		long1_rad = math.radians(self.longitude)
+		lat2_rad = math.radians(other_location.latitude)
+		long2_rad = math.radians(other_location.longitude)
+
+		a = (
+			math.sin((lat2_rad - lat1_rad) / 2) ** 2
+			+ math.cos(lat1_rad) * math.cos(lat2_rad)
+			* math.sin((long2_rad - long1_rad) / 2) ** 2
 		)
-		return distance
+
+		c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
+
+		horizontal_distance = 6371 * c
+
+		altitude_difference = (other_location.altitude - self.altitude) / 1000
+
+		total_distance = math.sqrt(horizontal_distance**2 + altitude_difference**2)
+
+		return total_distance
