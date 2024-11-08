@@ -15,6 +15,8 @@ class Ideal_params:
 	MIN_TEMP = 278
 	MAX_TEMP = 318
 	#=====battery=====#
+	FULL_LOADED_BATTERY = 1000 # Wats
+	DIST_PER_W = 100 # meters
 	MIN_BATTERY_TAKEOFF = 80 # minimo para comecar o voo e ainda fazer o checker se eh possivel voar com isso
 	MIN_BATTERY_IN_FLIGHT = 30
 	BATTERY_TEMP_MIN = 283

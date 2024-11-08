@@ -13,6 +13,11 @@ class Drone:
 		self.relative_altitude = relative_altitude
 		self.fligh_mode = flight_mode
 
+	def max_distance_possible(self):
+		from Ideal_Params import Ideal_params
+		max_distance = Ideal_params.FULL_LOADED_BATTERY * (self.battery_level / 100) * Ideal_params.DIST_PER_W
+		return max_distance
+
 	def update_battery_level(self, new_battery_level):
 		self.battery_level = new_battery_level
 		print(f"Drone battery updated to:{self.battery_level}")

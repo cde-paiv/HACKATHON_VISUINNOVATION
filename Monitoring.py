@@ -6,8 +6,7 @@ from Drone import Drone
 import asyncio
 
 class Monitoring:
-#	@@ aqui vai mudar que vai entrar o handeling da situação de acordo com o parâmetro ruim
-#	@ Função de comparação pré voô
+#	@ Função de monitoramentos do voo
 	async def	monitoring_misson_n_drone(drone):
 		from Mission import Mission
 
@@ -21,19 +20,26 @@ class Monitoring:
 			if current_status != previous_status:
 				if not current_status:
 					print("===========One or more parameters are not great===========")
-			# Here is going to be the actions that depending on the the return of the comparing_values
-			# will happen. -----(if the params are not good, flyback)------(if they are terrible, land_Now)------
-			#if flag == UNTIL_END:
-
 				previous_status = current_status
 
 			if Mission.status == Mission.FINISHED:
 				break
 
+#	@@ Falta atualizacao dos valores do drone real(perguntar a visuinnovation).
+#	@ Função de calculo de distancia possivel
+	def possible_distance():
+		from Waypoint import Waypoint
+		from Location import Location
+		if (Location.calc_distance(Drone, Waypoint) < Drone.max_distance_possible(Drone)):
+			return True
+		return False
+
 #	@@ aqui vai mudar que vai entrar o handeling da situação de acordo com o parâmetro ruim
 #	@ Função de comparação pré voô
 	async def first_comparation(drone):
 		await Monitoring.refreshing_values(drone)
+		if Monitoring.possible_distance() == False:
+			return False
 		if Weather.humidity > Ideal_params.HUMIDITY:
 			return False
 		if Weather.wind > Ideal_params.WIND:
