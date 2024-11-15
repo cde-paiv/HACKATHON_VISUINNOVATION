@@ -43,7 +43,7 @@ class Mission:
 				monitoring = asyncio.create_task(Monitoring.monitoring_misson_n_drone(drone))
 				# the monitoring will receive the waypojnt as well
 				log_file = asyncio.create_task(log())
-				await Mission.drone_fly_test(drone)
+				await Mission.drone_fly(drone)
 				monitoring.cancel()
 				await asyncio.sleep(10)
 				log_file.cancel()
@@ -66,17 +66,6 @@ class Mission:
 			return True
 
 
-#	@@ tem que criar ela completa, funcionando para varios ponto e nao dependente de sleep
-#	@ missao final de voo
-	async def	drone_fly(mission, drone):
-			mission_plan = MissionPlan(mission.mission_itens)
-			await drone.mission.set_return_to_launch_after_mission(True)
-			await drone.mission.upload_mission(mission_plan)
-			await drone.action.arm()
-			await drone.action.takeoff(drone.altitute_to_fly)
-			await drone.mission.start_mission()
-
-
 #	@ verifica continuamente a posição do drone até que ele atinja a posição desejada
 	async def wait_until_position_reached(drone, target_lat, target_lon, target_alt, tolerance):
 		Location.latitude = target_lat
@@ -91,7 +80,7 @@ class Mission:
 
 #	função de voo implementada sem o sleep so falta implemnetar a função de distancia
 #	@ função de teste de voô
-	async def drone_fly_test(drone):
+	async def drone_fly(drone):
 		mission = Mission()
 		Mission.status = Mission.RUNNING
 		mission.define_home(Drone.latitude, Drone.longitude, Drone.absolute_altitude)

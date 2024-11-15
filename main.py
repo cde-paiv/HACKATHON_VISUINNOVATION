@@ -71,7 +71,7 @@ async def	pymavlink_esc_status():
 
 
 #	definitive main
-async def main():
+""" async def main():
 	print("-- program started --")
 	drone = System()
 
@@ -87,7 +87,7 @@ async def main():
 	if sys.argv[1] == "data":
 		await Monitoring.refreshing_values(drone)
 		print_values()
-
+"""
 
 
 """ 	# test distance main
