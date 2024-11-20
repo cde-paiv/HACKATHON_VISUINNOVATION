@@ -74,7 +74,7 @@ class Mission:
 			print(Location.calc_distance(Drone, Location))
 			if (Location.calc_distance(Drone, Location) <= tolerance):
 				break
-			await asyncio.sleep(1)
+			await asyncio.sleep(0.5)
 
 
 #	função de voo implementada sem o sleep so falta implemnetar a função de distancia

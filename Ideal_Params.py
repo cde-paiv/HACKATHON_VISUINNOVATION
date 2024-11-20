@@ -1,7 +1,6 @@
 class Ideal_params:
 	#====weather====#
 	VISIBILITY = 100
-	# PRESSURE = 120000 #se necessario?
 	HUMIDITY = 80 # 80%
 	WIND = 10 # m/s
 	DESCRIPTION = [

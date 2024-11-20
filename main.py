@@ -70,7 +70,7 @@ async def	pymavlink_esc_status():
 				print(f"ESC {i}: RPM: {msg.rpm[i]}, Voltage: {msg.voltage[i]/1000.0}V, Current: {msg.current[i]/100.0}A")
 
 
-#	definitive main
+#	definitive test main
 async def main():
 	print("-- program started --")
 	drone = System()
