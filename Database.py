@@ -30,7 +30,6 @@ class Supabase:
 			.execute()
 			)
 
-	# Mudar aqui a parte do waypoint, pesquisar melhor como fazer
 	def	Create_User_row(self, id, username, e_mail, password, first_name, last_name, drone_id, waypoint_id):
 		url: str = os.getenv("SUPABASE_URL", self.link)
 		key: str = os.getenv("SUPABASE_KEY", self.key)

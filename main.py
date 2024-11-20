@@ -71,7 +71,7 @@ async def	pymavlink_esc_status():
 
 
 #	definitive main
-""" async def main():
+async def main():
 	print("-- program started --")
 	drone = System()
 
@@ -87,43 +87,6 @@ async def	pymavlink_esc_status():
 	if sys.argv[1] == "data":
 		await Monitoring.refreshing_values(drone)
 		print_values()
-"""
-
-
-""" 	# test distance main
-async def	main():
-	print("-- program started --")
-	drone = System()
-
-	Drone.drone_id = 14550
-	what_to_do = sys.argv[1]
-	await drone.connect(system_address="udp://:14550")
-	print("-- drone connected")
-	if sys.argv[1] == "fly":
-		name = sys.argv[2]
-		waypoint = sys.argv[3]
-		if finding_points_user(name, waypoint) == True:
-			await test_distance(drone)
-	if sys.argv[1] == "data":
-		await Monitoring.first_comparation(drone)
-		print_values() """
-
-"""		#test telemetry of motors
-	async def main():
-	print("-- program started --")
-	drone = System()
-
-	Drone.drone_id = 14550
-	await drone.connect(system_address="udp://:14550")
-	print("-- drone connected")
-	async for battery in drone.telemetry.battery():
-		break
-	print(battery.current_battery_a, battery.remaining_percent, battery.temperature_degc)
-
-	await pymavlink_esc_status()
-
- """
-
 
 loop = asyncio.get_event_loop()
 loop.run_until_complete(main())
