@@ -41,7 +41,6 @@ class Mission:
 			print("-- Starting_Mision")
 			if await Mission.mission_manage(drone) == True:
 				monitoring = asyncio.create_task(Monitoring.monitoring_misson_n_drone(drone))
-				# the monitoring will receive the waypojnt as well
 				log_file = asyncio.create_task(log())
 				await Mission.drone_fly(drone)
 				monitoring.cancel()
@@ -91,7 +90,7 @@ class Mission:
 		print("Taking off...")
 		await drone.action.set_takeoff_altitude(Waypoint.altitude)
 		await drone.action.takeoff()
-		await Mission.wait_until_position_reached(Drone, Drone.latitude, Drone.longitude, Waypoint.altitude, 1.00)
+		await Mission.wait_until_position_reached(Drone, Drone.latitude, Drone.longitude, Waypoint.altitude, 3.00)
 
 		print("Going to location...")
 		await drone.action.goto_location(Waypoint.latitude, Waypoint.longitude, Waypoint.altitude, 0)
