@@ -6,7 +6,7 @@ from Drone import Drone
 import asyncio
 
 class Monitoring:
-#	@ Função de monitoramentos do voo
+#	@ Function thta monitors the drone through the mission
 	async def	monitoring_misson_n_drone(drone):
 		from Mission import Mission
 
@@ -25,8 +25,7 @@ class Monitoring:
 			if Mission.status == Mission.FINISHED:
 				break
 
-#	@@ Falta atualizacao dos valores do drone real(perguntar a visuinnovation).
-#	@ Função de calculo de distancia possivel
+#	@ Check that the drone's and the waypoint's distance is possible
 	def possible_distance():
 		from Waypoint import Waypoint
 		from Location import Location
@@ -34,8 +33,8 @@ class Monitoring:
 			return True
 		return False
 
-#	@@ aqui vai mudar que vai entrar o handeling da situação de acordo com o parâmetro ruim
-#	@ Função de comparação pré voô
+#	@@ Receive the drone entity
+#	@ Do all the comparations to the ideal parameters to fly
 	async def first_comparation(drone):
 		await Monitoring.refreshing_values(drone)
 		if Monitoring.possible_distance() == False:
@@ -50,9 +49,6 @@ class Monitoring:
 			return False
 		if Weather.temp > Ideal_params.MAX_TEMP:
 			return False
-		#for param in Ideal_params.DESCRIPTION:
-		#	if param == variables.Weather.description:
-		#		return True
 					#===Battery===#
 		if Drone.battery_temp < Ideal_params.BATTERY_TEMP_MIN:
 			return False
@@ -65,8 +61,8 @@ class Monitoring:
 			return False
 		return True
 
-#	@@ aqui vai mudar que vai entrar o handeling da situação de acordo com o parâmetro ruim
-#	@ Função de comparação durante o voô
+#	@@ Receive the drone entity
+#	@ Do all the comparations to the ideal parameters during the flight
 	async def	comparing_values():
 					#===weather===#
 		if Weather.humidity > Ideal_params.HUMIDITY:
@@ -79,9 +75,6 @@ class Monitoring:
 			return False
 		if Weather.temp > Ideal_params.MAX_TEMP:
 			return False
-		#for param in Ideal_params.DESCRIPTION:
-		#	if param == Weather.description:
-		#		return True
 					#===Battery===#
 		if Drone.battery_temp < Ideal_params.BATTERY_TEMP_MIN:
 			return False
@@ -90,8 +83,6 @@ class Monitoring:
 		if Drone.battery_level < Ideal_params.MIN_BATTERY_IN_FLIGHT:
 			return False
 					#===drone====#
-		#if Drone.distance_to_base > Ideal_params.MAX_BASE_DISTANCE:
-		#	return False
 		if Drone.absolute_altitude > Ideal_params.MAX_ABSOLUTE_ALTITUDE:
 			return False
 		if Drone.relative_altitude < Ideal_params.MIN_REALTIVE_ALTITUDE:
@@ -100,8 +91,8 @@ class Monitoring:
 			return False
 		return True
 
-#	@@ so vai mudar se quisermos adicionar mais comparações ao código
-#	@ Função que vai atualizar os valores para que a comparação seja feita
+#	@@ Receive the drone entity
+#	@ Refresh all the compared values in order to use them refreshed
 	async def	refreshing_values(drone):
 		async for battery in drone.telemetry.battery():
 			break

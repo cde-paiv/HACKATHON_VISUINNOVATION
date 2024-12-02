@@ -2,22 +2,21 @@ from Drone import Drone
 import datetime
 import asyncio
 
-
-#	@ cria os ficheiros
+#	@@ Receive the name of the file
+#	@ Create the file with the name entered
 def creating_log_file(name):
 		open(name, "x")
 
-#	@@ adicionar oq falarem que precisam no log simples
-#	@ escreve o ficheiro simples
+#	@@ Receive the simple log file
+#	@ Write the short version of the log_file
 async def writting_simple_log(file):
 		from Mission import Mission
 		with open(file, "a") as simple_log:
 			log_header = f"Drone {Drone.drone_id}\nTime of flight {Mission.time_end - Mission.time_start}\nStatus: {Mission.status}\n"
 			simple_log.write(log_header)
 
-
-#	@@ adicionar oq falarem que precisam no log detalhado
-#	@ escreve o ficheiro detalhado
+#	@@ Receive the detailed log file
+#	@ Write the most complete version of the log_file
 async def	writting_detailed_log(file):
 	from Mission import Mission
 	with open(file, "a") as det_log:
@@ -33,8 +32,7 @@ async def	writting_detailed_log(file):
 		log_footer = f"=====> Drone flight ended, started at {Mission.time_start} ended at {Mission.time_end}, so it took {Mission.time_end - Mission.time_start}\n"
 		det_log.write(log_footer)
 
-
-#	@ cria e escreve o ficheiro detalhado
+#	@ Write the detailed and the simple log files in the same time that the mission is running
 async def log():
 	from Mission import Mission
 	Mission.time_start = datetime.datetime.now()

@@ -8,7 +8,7 @@ import asyncio
 import csv # testing with a little database
 import sys
 
-#	@ test function
+#	@ print function to test
 def			print_values():
 	from Weather import Weather
 	print(f"drone at {Drone.latitude} {Drone.longitude} {Drone.absolute_altitude}")
@@ -20,19 +20,8 @@ def			print_values():
 	print('Description:',Weather.description)
 	print('Visibility:',Weather.visibility)
 
-#	@ test function
-async def	test_distance(drone):
-	from Location import Location
-	await Monitoring.refreshing_values(drone)
-	print(f"Drone: {Drone.latitude}-{Drone.longitude}-{Drone.absolute_altitude}")
-	print(f"Waypoint: {Waypoint.latitude}-{Waypoint.longitude}-{Waypoint.altitude}")
-	print(f" max distance = {Drone.max_distance_possible(Drone)}")
-	print(f" distance to waypoint = {Location.calc_distance(Drone, Waypoint)}")
-	print(f"is it possible {Monitoring.possible_distance()}")
-
-
-#	@@ essa função vai mudar, porque a base de dados será diferente, oque muda o tipo de leitura
-#	@ função lê a base de dados e procura os waypoints
+#	@@ receive the name and the waypoint and search it at the csv
+#	@ Temp function that reads the data of the csv and sets the waypoint to fly to
 def			finding_points_user(name, waypoint):
 	with open('database.csv', 'r') as csvfile:
 		csv_reader = csv.reader(csvfile)
@@ -49,28 +38,8 @@ def			finding_points_user(name, waypoint):
 	print("Waypoint do not exist, or not in the user")
 	return False
 
-async def	pymavlink_esc_status():
-	master = mavutil.mavlink_connection('udp:127.0.0.1:14550')
-
-	master.wait_heartbeat()
-	print("Heartbeat from system (system %u component %u)" % (master.target_system, master.target_component))
-
-	master.mav.command_long_send(
-		master.target_system,
-		master.target_component,
-		mavutil.mavlink.MAV_CMD_REQUEST_MESSAGE,
-		0,
-		mavutil.mavlink.MAVLINK_MSG_ID_ESC_STATUS, # message ID
-		0, 0, 0, 0, 0, 0)
-
-	while True:
-		msg = master.recv_match(type='ESC_STATUS', blocking=True)
-		if msg:
-			for i in range(msg.esc_count):
-				print(f"ESC {i}: RPM: {msg.rpm[i]}, Voltage: {msg.voltage[i]/1000.0}V, Current: {msg.current[i]/100.0}A")
-
-
-#	definitive test main
+#	@@ receive what the program should do and where to go
+#	@ test main
 async def main():
 	print("-- program started --")
 	drone = System()

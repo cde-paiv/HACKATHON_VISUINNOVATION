@@ -29,14 +29,15 @@ class Mission:
 		self.time_start = None
 		self.time_end = None
 
-#	@@ Recebe as coordenadas de home
-#	@ Funcao de definir a posicao de home(lugar de partida)
+#	@@ Receive the coordinates of the home
+#	@ Set drone home position
 	def			define_home(self, latitude, longitude, altitude):
 		self.home["latitude"] = latitude
 		self.home["longitude"] = longitude
 		self.home["altitude"] = altitude
 
-#	@ função que começa e missao e ativa o monitoramento asincrono
+#	@@ Receive the drone entity
+#	@ Fuction set the log and the monitoring to run and start the mission
 	async def	start_mission(drone):
 			print("-- Starting_Mision")
 			if await Mission.mission_manage(drone) == True:
@@ -52,20 +53,17 @@ class Mission:
 				return False
 
 
-#	@ Ativa o modo rtl instantaneamente, cancelando a missao
-	async def		cancel_mission(drone):
-		await drone.action.returnto_launch()
-
-
-#	@ checa os parametros para ver se pode voar
+#	@@ Receive the drone entity
+#	@ Check the conditions to see if the drone can fly
 	async def	mission_manage(drone):
 			if await Monitoring.first_comparation(drone) == True:
 				return True
 			print("===========One or more parameters are not great to fly===========")
-			return True
+			return False
 
 
-#	@ verifica continuamente a posição do drone até que ele atinja a posição desejada
+#	@@ Receive the drone, the position which it is going to and the tolarance
+#	@ Countinously compare the drone position to the target one, until it reaches the tolerance
 	async def wait_until_position_reached(drone, target_lat, target_lon, target_alt, tolerance):
 		Location.latitude = target_lat
 		Location.longitude = target_lon
@@ -77,8 +75,8 @@ class Mission:
 			await asyncio.sleep(0.5)
 
 
-#	função de voo implementada sem o sleep so falta implemnetar a função de distancia
-#	@ função de teste de voô
+#	@@ Receive the drone entity
+#	@ Do the hole flight from home to the Waypoint desired and return to home
 	async def drone_fly(drone):
 		mission = Mission()
 		Mission.status = Mission.RUNNING
