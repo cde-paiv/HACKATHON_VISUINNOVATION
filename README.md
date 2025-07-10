@@ -24,18 +24,21 @@ Before the delivery, in which we got to test it with the drone, we were making t
 we were going to use in the final demonstration. 
 
 Objective achieved on the simulator:
-- Make the drone fly between multiple points making landings in all of them and returning to home,
-- Writing logs of position during the flight,
-- Refreshing the database for the management of users, waypoints and drones,
-- Safety checks before/during the flyight,
+- Make the **drone fly between multiple points** making **landings** in all of them and **returning to home**,
+- **Writing logs** of position during the flight,
+- **Refreshing the database** for the **management of users, waypoints and drones**,
+- **Safety checks before/during the flyight**,
 
 
 ---
 
 ## Division of labour
 
- - Backend -> [Eduardo Vasconcelos]() [Christofer]
- - Frontend ->  []
+ - Backend -> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [Eduardo Vasconcelos](https://github.com/eduVVSC) &nbsp;&nbsp;&nbsp;&nbsp; [Christofer Mota](https://github.com/cde-paiv)  &nbsp;&nbsp;&nbsp;&nbsp; [Joao Vitor Ribeiro](https://github.com/jvrs2002)
+ - Frontend -> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;[Matheus Infingardi](https://github.com/matheusinfingardi) &nbsp;&nbsp;&nbsp;&nbsp; [Davi Montaño](https://github.com/Daviddm03) 
+ - Project Manager -> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [Matheus Infingardi](https://github.com/matheusinfingardi)
+ - Connection backend and frontend -> [Eduardo Vasconcelos](https://github.com/eduVVSC)
 
 
 
