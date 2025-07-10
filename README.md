@@ -1,9 +1,15 @@
-# Drone Control System – Project Summary
+# Drone Control System – Hackathon Project
 
 ## Overview
 A comprehensive **autonomous drone control and monitoring system** built in Python. Designed for waypoint-based navigation and delivery missions, this system offers automated flight, real-time monitoring, safety validation, weather integration, and detailed logging.
 
 ---
+
+## Summary from the experience
+
+
+---
+
 
 ## Core Functionality
 - **Autonomous Flight** – Fully automated flight from takeoff to landing
