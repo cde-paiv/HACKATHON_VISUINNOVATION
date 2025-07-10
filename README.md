@@ -10,15 +10,37 @@ A comprehensive **autonomous drone control and monitoring system** built in Pyth
 The hackathon had the duration of 3 months, from august until final of november, in which we had constant contact with the company to develop an application (frontend and backend) that would make 
 the management of a drone between two points in a map.
 
-In order to develop it, we needed to strength our knowledge in, drone system, flight and components. 
-In order to do it, we used online simulation, with ardupilot and arducopter, to test the software before connecting and using it in a proper drone (final delivery), we also made a connection to an online
-database (supabase) .
+In order to develop it, we needed to strength our knowledge in:
+- **Drone system, flight and components**, 
+- **Database management** **(CRUD)**,
+- **Validation of technical requirements**,
+- **API usage** (connect the versel application to the backend),
+- **Embeeded Systems**,
+- **Waypoint and locaiton management**,
+- **Handling of DTO** sent by the weather API,
+- **Log creation**,
+
+Before the delivery, in which we got to test it with the drone, we were making the test through a drone simulator (arducopter) sending the personalized instructions via ardupilot controls, same ones received by the drone 
+we were going to use in the final demonstration. 
+
+Objective achieved on the simulator:
+- Make the drone fly between multiple points making landings in all of them and returning to home,
+- Writing logs of position during the flight,
+- Refreshing the database for the management of users, waypoints and drones,
+- Safety checks before/during the flyight,
+
+
+---
+
+## Division of labour
+
+ - Backend -> [Eduardo Vasconcelos]() [Christofer]
+ - Frontend ->  []
 
 
 
 
 ---
-
 
 ## Core Functionality
 - **Autonomous Flight** – Fully automated flight from takeoff to landing
