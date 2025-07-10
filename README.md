@@ -1,4 +1,4 @@
-# Drone Control System – Hackathon Project
+# Drone Control System – Hackathon Visuinnovation Project
 
 ## Overview
 A comprehensive **autonomous drone control and monitoring system** built in Python. Designed for waypoint-based navigation and delivery missions, this system offers automated flight, real-time monitoring, safety validation, weather integration, and detailed logging.
@@ -6,6 +6,15 @@ A comprehensive **autonomous drone control and monitoring system** built in Pyth
 ---
 
 ## 📌📋 Summary from the experience
+
+The hackathon had the duration of 3 months, from august until final of november, in which we had constant contact with the company to develop an application (frontend and backend) that would make 
+the management of a drone between two points in a map.
+
+In order to develop it, we needed to strength our knowledge in, drone system, flight and components. 
+In order to do it, we used online simulation, with ardupilot and arducopter, to test the software before connecting and using it in a proper drone (final delivery), we also made a connection to an online
+database (supabase) .
+
+
 
 
 ---
