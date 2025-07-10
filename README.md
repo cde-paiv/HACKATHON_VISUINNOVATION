@@ -5,7 +5,7 @@ A comprehensive **autonomous drone control and monitoring system** built in Pyth
 
 ---
 
-## Summary from the experience
+## 📌📋 Summary from the experience
 
 
 ---
