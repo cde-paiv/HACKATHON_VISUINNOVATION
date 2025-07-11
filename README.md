@@ -35,7 +35,7 @@ Objective achieved on the simulator:
 ## Division of labour
 
  - Backend -> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [Eduardo Vasconcelos](https://github.com/eduVVSC) &nbsp;&nbsp;&nbsp;&nbsp; [Christofer Mota](https://github.com/cde-paiv)  &nbsp;&nbsp;&nbsp;&nbsp; [Joao Vitor Ribeiro](https://github.com/jvrs2002)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [Eduardo Vasconcelos](https://github.com/eduVVSC) &nbsp;&nbsp;&nbsp;&nbsp; [Christofer Mota](https://github.com/cde-paiv)  &nbsp;&nbsp;&nbsp;&nbsp; [João Vitor Ribeiro](https://github.com/jvrs2002)
  - Frontend -> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;[Matheus Infingardi](https://github.com/matheusinfingardi) &nbsp;&nbsp;&nbsp;&nbsp; [Davi Montaño](https://github.com/Daviddm03) 
  - Project Manager -> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [Matheus Infingardi](https://github.com/matheusinfingardi)
  - Connection backend and frontend -> [Eduardo Vasconcelos](https://github.com/eduVVSC)
